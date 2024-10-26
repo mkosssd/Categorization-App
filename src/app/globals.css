@@ -76,4 +76,10 @@ body {
   body {
     @apply bg-background text-foreground;
   }
+  .outerBox {
+    @apply p-10 flex justify-center items-center;
+  }
+  .innerBox {
+    @apply border border-[#C1C1C1] rounded-[20px] px-14 py-8;
+  }
 }

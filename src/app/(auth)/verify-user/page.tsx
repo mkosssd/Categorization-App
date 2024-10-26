@@ -1,11 +1,11 @@
-import AuthForm from '@/components/AuthForm'
+import { VerificationForm } from '@/components/VerificationForm'
 import React from 'react'
 
 const page = () => {
     return (
         <div className='outerBox'>
             <div className='innerBox'>
-                <AuthForm type='sign-up' />
+                <VerificationForm />
             </div>
         </div>
     )

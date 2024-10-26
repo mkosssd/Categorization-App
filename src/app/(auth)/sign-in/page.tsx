@@ -5,7 +5,7 @@ const page = () => {
     return (
         <div className='outerBox'>
             <div className='innerBox'>
-                <AuthForm type='sign-up' />
+                <AuthForm type='sign-in' />
             </div>
         </div>
     )

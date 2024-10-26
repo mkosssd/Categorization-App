@@ -22,13 +22,13 @@ const CustomInput = ({ control, name, label, placeholder }: CustomInput) => {
             control={control}
             name={name}
             render={({ field }) => (
-                <div className='form-item'>
-                    <FormLabel className='form-label'>{label}</FormLabel>
+                <div>
+                    <FormLabel>{label}</FormLabel>
                     <div className='flex flex-col w-full'>
                         <FormControl>
                             <Input
                                 placeholder={placeholder}
-                                className='input-class'
+                                className='py-5'
                                 {...field}
                                 type={name === 'password' ? 'password' : 'text'}
                             />

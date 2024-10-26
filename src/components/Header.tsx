@@ -1,8 +1,11 @@
+import { getLoggedInUser, logoutAccount } from '@/lib/actions/auth.action'
 import { ChevronLeft, ChevronRight, Search, ShoppingCart } from 'lucide-react'
 import Link from 'next/link'
 import React from 'react'
 
-const Header = () => {
+const Header = async () => {
+    const loggedUser = await getLoggedInUser()
+
     return (
         <header>
             <div className='py-4 md:px-12 px-4'>
@@ -11,17 +14,22 @@ const Header = () => {
                         <li>
                             <Link href='/'>Help</Link>
                         </li>
-                        <li>
+                        {loggedUser &&<li>
                             <Link href='/'>Orders & Returns</Link>
+                        </li>}
+                        <li>
+                            {loggedUser ?
+                                <Link href='/'>Hi, {loggedUser.name}</Link>
+                                : <Link href='sign-in'>Sign In</Link>}
                         </li>
                         <li>
-                            <Link href='/'>Hi, UserName</Link>
+                            {loggedUser && <button onClick={logoutAccount}>Logout</button>}
                         </li>
                     </ul>
                 </div>
                 <div className="grid md:grid-cols-12 py-1 grid-cols-auto place-items-stretch items-end">
                     <div className='md:col-span-3 max-md:text-center'>
-                        <h1 className='text-[32px] font-bold'>ECOMMERCE</h1>
+                        <Link href='/' className='text-[32px] font-bold'>ECOMMERCE </Link>
                     </div>
                     <div className='md:col-span-6'>
                         <ul className='flex md:gap-6 gap-y-1 gap-x-2 flex-wrap font-semibold text-[16px] justify-center'>
@@ -53,9 +61,9 @@ const Header = () => {
                 </div>
             </div>
             <div className='flex justify-center items-center gap-5 py-2 bg-[#F4F4F4]'>
-                <ChevronLeft width={20} height={20}/>
+                <ChevronLeft width={20} height={20} />
                 <p className='text-sm font-medium'> Get 10% off on business sign up </p>
-                <ChevronRight width={20} height={20}/>
+                <ChevronRight width={20} height={20} />
             </div>
         </header>
     )

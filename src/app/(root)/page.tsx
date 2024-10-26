@@ -1,5 +1,11 @@
-export default function Home() {
-  return (
-   <h1>ds</h1>
-  );
+const Home = () => {
+    return (
+        <div className="outerBox">
+            <div className="innerBox">
+                s
+            </div>
+        </div>
+    );
 }
+
+export default Home
