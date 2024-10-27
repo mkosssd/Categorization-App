@@ -18,7 +18,7 @@ export const getUserInfo = async ({ userId }: { userId: string }) => {
       USER_COLLECTION_ID!,
       [Query.equal('userId', [userId])]
     )
-    
+
     return parseStringify(user.documents[0])
   } catch (error) {
     console.log(error)
@@ -46,7 +46,14 @@ export const SignIn = async (userData: { email: string; password: string }) => {
   }
 }
 
-export const SignUp = async ({ password, ...userData }: {password: string, email: string, name: string}) => {
+export const SignUp = async ({
+  password,
+  ...userData
+}: {
+  password: string
+  email: string
+  name: string
+}) => {
   const { email, name } = userData
   let newUserAccount
 
@@ -86,16 +93,16 @@ export const SignUp = async ({ password, ...userData }: {password: string, email
   }
 }
 export async function getLoggedInUser () {
-   try {
-        const { account } = await createSessionClient()
-        const result = await account.get()
+  try {
+    const { account } = await createSessionClient()
+    const result = await account.get()
 
-        const user = await getUserInfo({userId: result.$id})
-        return parseStringify(user)
+    const user = await getUserInfo({ userId: result.$id })
+    return parseStringify(user)
     // eslint-disable-next-line @typescript-eslint/no-unused-vars
-    } catch (error) {
-        return null
-    }
+  } catch (error) {
+    return null
+  }
 }
 
 export const logoutAccount = async () => {
@@ -109,16 +116,18 @@ export const logoutAccount = async () => {
 }
 
 export const sendVerificationOTP = async () => {
-    try {
-      const { account } = await createSessionClient()
-      const verificationResponse = await account.createVerification('http://localhost:3000/verify-user')
-        
-      return verificationResponse
-    } catch (error) {
-      console.error('Error sending verification email:', error)
-      throw new Error('Failed to send verification email.')
-    }
+  try {
+    const { account } = await createSessionClient()
+    const verificationResponse = await account.createVerification(
+      'http://localhost:3000/verify-user'
+    )
+
+    return verificationResponse
+  } catch (error) {
+    console.error('Error sending verification email:', error)
+    throw new Error('Failed to send verification email.')
   }
+}
 
 export const verifyAccount = async () => {
   try {

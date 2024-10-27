@@ -82,4 +82,7 @@ body {
   .innerBox {
     @apply border border-[#C1C1C1] rounded-[20px] px-14 py-8;
   }
+  .h1 {
+    @apply font-semibold text-[32px];
+  }
 }

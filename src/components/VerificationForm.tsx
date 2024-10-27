@@ -39,7 +39,7 @@ export function VerificationForm() {
     return (
         <div className="max-w-[400px] flex flex-col items-center px-5 ">
             <div className="text-center mb-6">
-                <h1 className="font-semibold text-[32px] mb-3">Verify your email</h1>
+                <h1 className="h1 mb-3">Verify your email</h1>
                 <p className="text-sm">
                     Enter the 6 digit code you have received on <br /> {email}
                 </p>

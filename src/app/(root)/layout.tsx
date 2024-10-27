@@ -3,6 +3,7 @@
 import { getLoggedInUser } from '@/lib/actions/auth.action';
 import React, { ReactNode, useEffect, useState } from 'react';
 import { useRouter } from 'next/navigation';
+import Loader from '@/components/Loader';
 
 type LayoutProps = {
     children: ReactNode;
@@ -25,9 +26,9 @@ const Layout = ({ children }: LayoutProps) => {
         };
 
         checkUser();
-    }, [router, user]); 
+    }, []); 
 
-    if (loading) return null;
+    if (loading) return <Loader />;
 
     return <div>{children}</div>;
 };

@@ -62,7 +62,7 @@ const AuthForm = ({ type }: { type: 'sign-in' | 'sign-up' }) => {
     }
     return (
         <section className='w-[400px]'>
-            <h1 className='text-[32px] font-semibold  text-center'>
+            <h1 className='h1 text-center'>
                 {type == 'sign-up' ? "Create your account" : "Login"}
             </h1>
             <div className='py-6 border-b'>
