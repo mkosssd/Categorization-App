@@ -8,7 +8,7 @@ import {
 } from "@/components/ui/pagination";
 import { cn } from "@/lib/utils";
 
-export function CustomPagination({ page }: { page: string | null }) {
+export function CustomPagination({ page ='1' }: { page: string | null }) {
     const pagination = []
     for (let i = 1; i <= 10; i++) {
         pagination.push(<PaginationItem className={cn(page && +page == i ? 'bg-slate-200 rounded' : '')} key={i}>
