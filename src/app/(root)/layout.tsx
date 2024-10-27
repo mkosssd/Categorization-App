@@ -1,25 +1,35 @@
-import { getLoggedInUser } from '@/lib/actions/auth.action'
-import React from 'react'
+"use client";
+/* eslint-disable @typescript-eslint/no-unused-vars */
+import { getLoggedInUser } from '@/lib/actions/auth.action';
+import React, { ReactNode, useEffect, useState } from 'react';
+import { useRouter } from 'next/navigation';
 
-import { redirect } from "next/navigation";
+type LayoutProps = {
+    children: ReactNode;
+};
 
+const Layout = ({ children }: LayoutProps) => {
+    const router = useRouter();
+    const [loading, setLoading] = useState(true);
+    const [user, setUser] = useState(null);
 
-const layout = async ({
-    children,
-}: Readonly<{
-    children: React.ReactNode;
-}>) => {
-    const loggedIn = await getLoggedInUser()
-    if (!loggedIn) {
-        redirect('/sign-in')
-        return
-    }
-    return (
-        <div>
-            {children}
-        </div>
-    )
-}
+    useEffect(() => {
+        const checkUser = async () => {
+            const currentUser = await getLoggedInUser();
+            if (!currentUser) {
+                router.push('/sign-in');
+            } else {
+                setUser(currentUser);
+                setLoading(false);
+            }
+        };
 
-export default layout
+        checkUser();
+    }, [router, user]); 
 
+    if (loading) return null;
+
+    return <div>{children}</div>;
+};
+
+export default Layout;
