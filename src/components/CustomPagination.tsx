@@ -23,7 +23,7 @@ export function CustomPagination({ page }: { page: string | null }) {
                 </PaginationItem>)}
                 {pagination}
                 {page && +page < 10 &&<PaginationItem>
-                    <PaginationNext href="#" />
+                    <PaginationNext  href={"?page=" + (+page + 1)} />
                 </PaginationItem>}
             </PaginationContent>
         </Pagination>
