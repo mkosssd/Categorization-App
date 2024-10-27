@@ -10,10 +10,10 @@ const layout = async ({
     children: React.ReactNode;
 }>) => {
     const loggedIn = await getLoggedInUser()
-    // if (loggedIn) {
-    //     redirect('/')
-    //     return
-    // }
+    if (loggedIn) {
+        redirect('/')
+        return
+    }
     return (
         <div>
             {children}
