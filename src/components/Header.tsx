@@ -1,11 +1,15 @@
 import { getLoggedInUser, logoutAccount } from '@/lib/actions/auth.action'
 import { ChevronLeft, ChevronRight, Search, ShoppingCart } from 'lucide-react'
 import Link from 'next/link'
+import { redirect } from 'next/navigation'
 import React from 'react'
 
 const Header = async () => {
     const loggedUser = await getLoggedInUser()
-
+    const logoutHandler = () => {
+        logoutAccount()
+        redirect('/sign-in')
+    }
     return (
         <header>
             <div className='py-4 md:px-12 px-4'>
@@ -23,7 +27,7 @@ const Header = async () => {
                                 : <Link href='sign-in'>Sign In</Link>}
                         </li>
                         <li>
-                            {loggedUser && <button onClick={logoutAccount}>Logout</button>}
+                            {loggedUser && <button onClick={logoutHandler}>Logout</button>}
                         </li>
                     </ul>
                 </div>
