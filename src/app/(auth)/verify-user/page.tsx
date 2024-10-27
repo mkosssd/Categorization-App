@@ -1,11 +1,14 @@
 import { VerificationForm } from '@/components/VerificationForm'
-import React from 'react'
+import { Loader2 } from 'lucide-react'
+import React, { Suspense } from 'react'
 
 const page = () => {
     return (
         <div className='outerBox'>
             <div className='innerBox'>
-                <VerificationForm />
+                <Suspense fallback={<Loader2/>}>
+                    <VerificationForm />
+                </Suspense>
             </div>
         </div>
     )
