@@ -1,9 +1,11 @@
+'use client'
 import { getLoggedInUser, logoutAccount } from '@/lib/actions/auth.action'
 import { ChevronLeft, ChevronRight, Search, ShoppingCart } from 'lucide-react'
 import Link from 'next/link'
 import { redirect } from 'next/navigation'
 import React from 'react'
 
+// eslint-disable-next-line @next/next/no-async-client-component
 const Header = async () => {
     const loggedUser = await getLoggedInUser()
     const logoutHandler = () => {
